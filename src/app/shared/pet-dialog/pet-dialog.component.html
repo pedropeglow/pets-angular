@@ -1,0 +1,22 @@
+<h1 *ngIf="isChange" mat-dialog-title>Cadastrar Pet</h1>
+<h1 *ngIf="!isChange" mat-dialog-title>Atualizar Pet</h1>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <input matInput [(ngModel)]="data.tipo">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Idade</mat-label>
+    <input type="number" matInput [(ngModel)]="data.idade">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button *ngIf="isChange" mat-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Cadastrar</button>
+  <button *ngIf="!isChange" mat-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Atualizar</button>
+</div>
