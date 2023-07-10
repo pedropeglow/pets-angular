@@ -11,24 +11,29 @@ export class PetService {
   constructor(private http: HttpClient) { }
 
   getPets(): Observable<Pet[]>{
-    return this.http.get<Pet[]>(this.petApiUrl);
+    var token = localStorage.getItem('token');
+    return this.http.get<Pet[]>(this.petApiUrl, {headers: {['x-access-token']: `${token}`}});
   }
   
   createPet(pet: Pet): Observable<Pet>{
+    var token = localStorage.getItem('token');
     return this.http.post<Pet>(this.petApiUrl, {
       nome: pet.nome,
       tipo: pet.tipo,
-      idade: pet.idade
-    });
+      idade: pet.idade,
+      usuario: pet.usuario
+    }, {headers: {['x-access-token']: `${token}`}}
+    );
   }
 
   updatePets(pet: Pet): Observable<Pet>{
-    return this.http.put<Pet>(this.petApiUrl + `/${pet._id}`, pet);
+    var token = localStorage.getItem('token');
+    return this.http.put<Pet>(this.petApiUrl + `/${pet._id}`, pet, {headers: {['x-access-token']: `${token}`}});
   }
 
   deletePet(id: string) {
-    console.log('id', id)
-    return this.http.delete(this.petApiUrl + `/${id}`);
+    var token = localStorage.getItem('token');
+    return this.http.delete(this.petApiUrl + `/${id}`, {headers: {['x-access-token']: `${token}`}});
   }
 
 }
