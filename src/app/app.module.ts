@@ -14,13 +14,19 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FilterPipe } from './filter.pipe';
+import { MaskPipe } from './anosMascara.pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { LoginComponent } from './views/login/login.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PetsComponent,
-    PetDialogComponent
+    PetDialogComponent,
+    FilterPipe,
+    MaskPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
