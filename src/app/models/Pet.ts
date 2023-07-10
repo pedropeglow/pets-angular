@@ -3,4 +3,5 @@ export default interface Pet {
     nome: string;
     tipo: string;
     idade: number;
+    usuario: string;
 }

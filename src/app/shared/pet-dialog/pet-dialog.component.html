@@ -14,6 +14,16 @@
     <mat-label>Idade</mat-label>
     <input type="number" matInput [(ngModel)]="data.idade">
   </mat-form-field>
+  <mat-form-field>
+    <mat-label>Usuário</mat-label>
+    <mat-select [(ngModel)]="data.usuario">
+      <mat-option *ngFor="let usuario of usuarios" [value]="usuario._id">
+        {{ usuario.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+   
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancelar</button>
